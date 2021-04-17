@@ -14,6 +14,9 @@ namespace NAVCalculatorAPI.Business.Managers
     public interface IAssetDetailsManager
     {
         Task<List<TestTableContractModel>> GetTestData();
+        Task<TestTableContractModel> GetTestData(int id);
+        Task<int> CreateTestData(TestTableContractModel model);
+        
     }
 
     public class AssetDetailsManager : IAssetDetailsManager
@@ -27,5 +30,28 @@ namespace NAVCalculatorAPI.Business.Managers
             return result.Select(ConvertDBModelToContractModel.ToTestTableContractModel).ToList();
         }
 
+        public async Task<TestTableContractModel> GetTestData(int id)
+        {
+            var testRepo = Container.For<RepositoryRegistry>();
+            var testRepoInstance = testRepo.GetInstance<IAssetDetailsRepository>();
+            var result = await testRepoInstance.GetTestData(id);
+
+            var managerResult = ConvertDBModelToContractModel.ToTestTableContractModel(result);
+
+            return managerResult;
+        }
+
+
+
+        public async Task<int> CreateTestData(TestTableContractModel model)
+        {
+            var testRepo = Container.For<RepositoryRegistry>();
+            var testRepoInstance = testRepo.GetInstance<IAssetDetailsRepository>();
+            var result = await testRepoInstance.CreateTestData(model);
+            return result;
+        }
+
     }
+
+    
 }

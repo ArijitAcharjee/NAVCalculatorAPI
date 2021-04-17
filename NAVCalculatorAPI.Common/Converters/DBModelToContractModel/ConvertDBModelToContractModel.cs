@@ -21,7 +21,8 @@ namespace NAVCalculatorAPI.Common.Converters.DBModelToContractModel
                 }
                 else
                 {
-                    model.FirstName = a.FirstName;
+                    model.TestTableId = a.TestTableId;
+                    model.FirstName = a.FirstName.ToUpper();
                     model.SurName = a.SurName;
 
                     return model;

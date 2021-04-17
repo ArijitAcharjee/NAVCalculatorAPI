@@ -102,5 +102,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NAVCalculatorAPI.Contract\NAVCalculatorAPI.Contract.csproj">
+      <Project>{dd24934b-e5fa-4bf2-85eb-4eec6a2cc7f4}</Project>
+      <Name>NAVCalculatorAPI.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
